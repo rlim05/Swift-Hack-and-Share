@@ -13,6 +13,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var color = Color.white
     @State private var date = Date()
+    let drinks = ["Sprite", "Coke", "Fanta", "Root Beer", "Mountain Dew", "Pepsi", "Ginger Ale", "Dr Pepper", "Lemonade"]
+    @State private var favoriteDrink = "Coke"
     var body: some View {
         VStack {
             Text("Pickers")
@@ -30,12 +32,17 @@ struct ContentView: View {
                     .padding()
             }
             DatePicker("", selection: $date)
-                .frame(width: 150, height: 25, alignment: .center)
+                .frame(width: 150, height: 65, alignment: .center)
                 .padding()
-            Text("Today's Date is \(date)")
+                .datePickerStyle(WheelDatePickerStyle())
+            HStack {
+                Text("Today's Date is \(date)")
+                    .padding()
+            }
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
